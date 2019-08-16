@@ -7,8 +7,8 @@ import {
 } from 'react-icons/md';
 import { bindActionCreators } from 'redux';
 import { Container, ProductTable, Total } from './styles';
-import * as CartActions from '../../store/modules/cart/actions';
-import { formatPrice } from '../../util/format';
+import * as CartActions from '~/store/modules/cart/actions';
+import { formatPrice } from '~/util/format';
 
 function Cart({ cart, total, removeFromCart, updateAmount }) {
   function increment(product) {
@@ -25,56 +25,53 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
         <thead>
           <tr>
             <th />
-            <th>Product</th>
-            <th>Amount</th>
-            <th>Total: </th>
-            <th />
-          </tr>
-        </thead>
+            <th> Product </th> <th> Amount </th> <th> Total: </th> <th />
+          </tr>{' '}
+        </thead>{' '}
         <tbody>
+          {' '}
           {cart.map(product => (
             <tr>
               <td>
-                <img src={product.description} alt={product.name} />
-              </td>
+                <img src={product.description} alt={product.name} />{' '}
+              </td>{' '}
               <td />
               <td>
-                <strong>{product.name}</strong>
-                <span>{product.priceFormatted}</span>
-              </td>
+                <strong> {product.name} </strong>{' '}
+                <span> {product.priceFormatted} </span>{' '}
+              </td>{' '}
               <td>
                 <div>
                   <button type="button" onClick={() => decrement(product)}>
                     <MdRemoveCircleOutline size={20} color="#7159c1" />
-                  </button>
-                  <input type="number" readOnly value={product.amount} />
+                  </button>{' '}
+                  <input type="number" readOnly value={product.amount} />{' '}
                   <button type="button" onClick={() => increment(product)}>
                     <MdAddCircleOutline size={20} color="#7159c1" />
-                  </button>
-                </div>
-              </td>
+                  </button>{' '}
+                </div>{' '}
+              </td>{' '}
               <td>
-                <strong>{product.subtotal}</strong>
-              </td>
+                <strong> {product.subtotal} </strong>{' '}
+              </td>{' '}
               <td>
                 <button
                   type="button"
                   onClick={() => removeFromCart(product.id)}
                 >
                   <MdDelete size={20} color="7159c1" />
-                </button>
-              </td>
+                </button>{' '}
+              </td>{' '}
             </tr>
-          ))}
-        </tbody>
-      </ProductTable>
+          ))}{' '}
+        </tbody>{' '}
+      </ProductTable>{' '}
       <footer>
-        <button type="button">Order now!</button>
+        <button type="button"> Order now! </button>{' '}
         <Total>
-          <span>Total</span>
-          <strong>{total}</strong>
-        </Total>
-      </footer>
+          <span> Total </span> <strong> {total} </strong>{' '}
+        </Total>{' '}
+      </footer>{' '}
     </Container>
   );
 }

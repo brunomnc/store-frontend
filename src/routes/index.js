@@ -3,6 +3,7 @@ import React from 'react';
 import Home from '~/pages/Home';
 import Cart from '~/pages/Cart';
 import Login from '~/pages/Login';
+import SignUp from '~/pages/SignUp';
 import Error from '~/pages/Error';
 import Route from './Route';
 
@@ -12,6 +13,7 @@ export default function Routes() {
       <Route path="/" exact component={Home} />
       <Route path="/cart" component={Cart} />
       <Route path="/login" component={Login} />
+      <Route path="/register" component={SignUp} />
       <Route path="/" component={Error} />
     </Switch>
   );

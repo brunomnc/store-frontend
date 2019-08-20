@@ -8,21 +8,17 @@ export function* signIn({ payload }) {
   try {
     const { email, password } = payload;
 
-    const response = yield call(api.post, 'sessions', {
+    const response = yield call(api.post, 'session', {
       email,
       password,
     });
 
     const { token, user } = response.data;
 
-    if (!user.provider) {
-      toast.error('user not provider');
-      return;
-    }
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
-    history.push('./dashboard');
+    history.push('./');
   } catch (err) {
     toast.error('Incorrect username or password.');
     yield put(signFailure());
@@ -31,9 +27,10 @@ export function* signIn({ payload }) {
 
 export function* signUp({ payload }) {
   try {
-    const { name, email, password } = payload;
+    const { name, age, email, password } = payload;
     yield call(api.post, 'users', {
       name,
+      age,
       email,
       password,
       provider: true,
@@ -41,7 +38,7 @@ export function* signUp({ payload }) {
 
     history.push('/');
   } catch (err) {
-    toast.error('Sign Up failure. Verify your data');
+    toast.error(err.response.data.error);
     yield put(signFailure());
   }
 }

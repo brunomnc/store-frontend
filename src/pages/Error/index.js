@@ -6,8 +6,8 @@ export default function Error() {
   return (
     <Container to="/">
       <div>
-        <img src={error} alt="404" />
-        <strong>404, that means GET OUT OF MY LAWN!</strong>
+        <img src={error} alt="403" />
+        <strong>403, that means GET OUT OF MY LAWN!</strong>
       </div>
     </Container>
   );
